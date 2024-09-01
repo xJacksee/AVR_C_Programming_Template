@@ -7,7 +7,7 @@ Before you start compiling, it is adviced to edit all variables in makefile:
 - MCU - name of the microcontroller listed in avr-gcc compiler
 - DUDE_MCU - name of the microcontroller listed in avrdude
 - PROG - name of used programmed according to avrdude list
-- NAME - name of the application source code file (without extension)
+- SOURCE - name of the application source code file (without extension)
 - PORT - name of the port that the programmer is connected to
 ## Nessesary tools
  - avr-gcc
