@@ -1,7 +1,7 @@
 MCU = atmega328p
 DUDE_MCU = m328p
 PROG = stk500v1
-NAME = main
+SOURCE = main
 PORT = /dev/ttyACM0
 
 upload: hex
