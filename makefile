@@ -5,7 +5,7 @@ SOURCE = main
 PORT = /dev/ttyACM0
 
 upload: hex
-	avrdude -c $(PROG) -p $(DUDE_MCUMCU) -P $(PORT) -U flash:w:"./bin/$(NAME).hex":i
+	avrdude -c $(PROG) -p $(DUDE_MCU) -P $(PORT) -U flash:w:"./bin/$(NAME).hex":i
 
 hex: compile
 	avr-objcopy ./bin/$(SOURCE).elf -O ihex ./bin/main.hex
