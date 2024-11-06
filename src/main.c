@@ -1,7 +1,8 @@
 /*
 *************************
 * Project Name          *
-* Rev 1.0               *
+* Rev. 1.0              *
+* Version: 1.0          *
 * Date:                 *
 * Author:               *
 *************************
@@ -12,11 +13,11 @@ Description:
 
 */
 
-#define F_CPU 1000000UL // Define clock frequency in Hz for delay.h library to work correctly
-
 //Include standard AVR libraries
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
+#include <avr/sleep.h>
 
 //Include external libraries
 
