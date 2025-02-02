@@ -1,7 +1,7 @@
 /*
 *************************
-* Project Name          *
-* Rev. 1.0              *
+* Project:              *
+* Rev.: 1.0             *
 * Version: 1.0          *
 * Date:                 *
 * Author:               *
@@ -11,15 +11,20 @@ LICENCE:
 
 Description:
 
+
 */
 
-//Include standard AVR libraries
+// Hardware Defines
+#define __AVR_ATmega328P__
+#define F_CPU 16000000UL
+
+//Standard AVR libraries
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
 
-//Include external libraries
+//External libraries
 
 //Function prototypes
 

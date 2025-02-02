@@ -5,9 +5,9 @@
             "includePath": [
                 "${workspaceFolder}/**"
             ],
-            "defines": ["__AVR_ATmega328P__"],
+            "defines": [],
             "compilerPath": "/usr/bin/avr-gcc",
-            "cStandard": "c99",
+            "cStandard": "c23",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64"
         }
