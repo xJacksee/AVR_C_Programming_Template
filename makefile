@@ -1,24 +1,47 @@
 # AVR programming makefile
 
-# Compilation and programming variables
-MCU = atmega328p 		# Microcontroller name according to avr-gcc compiler list of supported devices
-DUDE_MCU = m328p		# Microcontroller name according to avrdude list of supported devices
-PROG = stk500v1			# Programmer name according to avrdude list of supported programmers
-SOURCE = main			# Main C/C++ source file name (without extension; change extension to .cpp in commands below if using C++)
-PORT = /dev/ttyACM0		# Serial/Pararell port that programmer is connected to (remove this argument if using usbtiny)
-BAUD = 19200			# Baud rate used by a programmer (wrong setting can result in "out of sync" or "0x00 device signature" errors)
-LOG = avrdude			# Name of a log file that will contain verbose (-v) output and summary of avrdude action
-F_CPU = 16000000UL		# CPU clock speed in Hz (UL - unsigned long)
+# Paths
+SOURCE_PATH = ./src/
+HEADER_PATH = ./headers
+LIB_PATH = ./lib/
+BIN_PATH = ./bin/
+LOG_PATH = ./log/
+
+# Compiler varaibles
+SOURCES = $(SOURCE_PATH)main.c
+OUTPUT = main
+
+MCU = atmega328p
+COMPILER_FLAGS = -mmcu=$(MCU) -Wall -O1 -I $(HEADER_PATH)
+
+# Uploader variables
+CONFIG_FILE = /etc/avrdude.conf
+DUDE_MCU = m328P
+PROG = stk500v1
+PORT = /dev/ttyACM0
+BAUD = 19200
+FLASH_LOG = flash_upload
+FUSE_LOG = fuses_upload
+
+# Fuse settings
+LOW_FUSE = 0x62
+HIGH_FUSE = 0xD9
+EXT_FUSE = 0xFF
+LOCK_FUSE = 0xFF
 
 # Upload application
 upload: compile
-	avrdude -v -C /etc/avrdude.conf -c $(PROG) -p $(DUDE_MCU) -P $(PORT) -b $(BAUD) -l ./log/$(LOG).log -U flash:w:"./bin/$(SOURCE).hex":i
+	avrdude -v -C /etc/avrdude.conf -c $(PROG) -p $(DUDE_MCU) -P $(PORT) -b $(BAUD) -l $(LOG_PATH)$(LOG).log -U flash:w:"$(BIN_PATH)$(OUTPUT).hex":i
 
 # Compile source code to .hex and .elf binary format (change avr-gcc to avr-g++ if using C++)
 compile:
-	avr-gcc ./src/$(SOURCE).c -o ./bin/$(SOURCE).elf -Wall -O1
-	avr-objcopy ./bin/$(SOURCE).elf -O ihex ./bin/main.hex
+	avr-gcc $(SOURCES) -o $(BIN_PATH)$(OUTPUT).elf $(COMPILER_FLAGS)
+	avr-objcopy $(BIN_PATH)$(OUTPUT).elf -O ihex $(BIN_PATH)$(OUTPUT).hex
 
 # Remove compiled output files and logs
 clean:
-	rm ./bin/*.elf && rm ./bin/*.hex && rm ./log/*.log
+	rm $(BIN_PATH)*.elf && rm $(BIN_PATH)*.hex && rm $(LOG_PATH)*.log
+
+# Setup fuses
+fuse:
+	avrdude -v -C $(CONFIG_FILE) -c $(PROG) -p $(DUDE_MCU) -P $(PORT) -b $(BAUD) -l ./log/$(LOG).log -U lfuse:w:$(LOW_FUSE):m -U hfuse:w:$(HIGH_FUSE):m -U efuse:w:$(EXT_FUSE):m -U lock:w:$(LOCK_FUSE):m

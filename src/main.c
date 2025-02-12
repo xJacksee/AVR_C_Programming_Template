@@ -13,18 +13,7 @@ Description:
 
 
 */
-
-// Hardware Defines
-#define __AVR_ATmega328P__
-#define F_CPU 16000000UL
-
-//Standard AVR libraries
-#include <avr/io.h>
-#include <util/delay.h>
-#include <avr/interrupt.h>
-#include <avr/sleep.h>
-
-//External libraries
+#include "main.h"
 
 //Function prototypes
 
