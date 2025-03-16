@@ -42,7 +42,7 @@ upload: compile
 
 # Compile source code to .hex and .elf binary format (change avr-gcc to avr-g++ if using C++)
 compile:
-	avr-gcc $(SOURCES) -o $(BIN_PATH)$(OUTPUT).elf -mmcu=$(MCU) -Wall -O1 -I $(HEADER_PATH)
+	avr-gcc $(SOURCES) -o $(BIN_PATH)$(OUTPUT).elf -mmcu=$(MCU) -Wall -O1 -I $(HEADER_PATH) -std=c11
 	avr-objcopy $(BIN_PATH)$(OUTPUT).elf -O ihex $(BIN_PATH)$(OUTPUT).hex
 
 # Remove compiled output files and logs

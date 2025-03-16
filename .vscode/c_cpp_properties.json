@@ -7,8 +7,8 @@
             ],
             "defines": ["__AVR_ATmega328P__"],
             "compilerPath": "/usr/bin/avr-gcc",
-            "cStandard": "c23",
-            "cppStandard": "gnu++17",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
             "intelliSenseMode": "linux-gcc-x64"
         }
     ],
