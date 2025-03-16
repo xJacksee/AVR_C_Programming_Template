@@ -1,31 +1,39 @@
 /*
-*************************
-* Project:              *
-* Rev.: 1.0             *
-* Version: 1.0          *
-* Date:                 *
-* Author:               *
-*************************
-
-LICENCE:
+******************************************
+Project:              
+Board Revision: 1.0             
+Application Version: 1.0          
+Date:                 
+Author:               
+******************************************
 
 Description:
 
 
+LICENCE:
+
+
 */
+
+// Includes
 #include "main.h"
 
-//Function prototypes
 
-//Interrupts
+// Defines
 
-//Global variables
 
-//Main
-int main() {
-    //Initial setup
+// Global variables
 
-    //Main loop
+
+// Function prototypes
+
+
+// Interrupts
+
+
+// Main loop
+int main(void) {
+
     while(1) {
 
     }
@@ -33,4 +41,4 @@ int main() {
     return 0;
 }
 
-//Functions
+// Functions

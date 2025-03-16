@@ -1,8 +1,12 @@
+#ifndef _MAIN_H
+#define _MAIN_H
+
 // Hardware configuration
 #include "config.h"
 
 // Standard C libraries
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Standard AVR libraries
 #include <avr/io.h>
@@ -14,3 +18,6 @@
 
 
 // External variables
+
+
+#endif
